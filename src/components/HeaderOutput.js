@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function HeaderOutput() {
+export default function HeaderOutput () {
+
   return (
     <header>
-      <button className="btn">Output</button>
+      <button className="btn">Output</button>    
     </header>
   )
 }
