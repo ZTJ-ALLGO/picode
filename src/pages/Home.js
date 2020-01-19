@@ -36,14 +36,14 @@ export default function Home () {
         setPreview(value);
         setIsRunning(false);
       }, 1000);
-    }
+    }    
   }
 
   const onSelectLang = (value) =>{    
     if(value === 'Cpp' || value === 'C' || value === 'Cpp14') {
       value = 'c_cpp'
     }
-    setLang(value)
+    setLang(value);    
   }
 
   return (
@@ -51,7 +51,7 @@ export default function Home () {
       <div className="editor">
         <HeaderEditor onRunCode={onRunCode} onSelectLang={onSelectLang} />
         <AceEditor
-          mode={lang.toLocaleLowerCase().replace(/\d/gi,'')}
+          mode={lang.toLowerCase().replace(/\d/gi,'')}
           theme="monokai"
           onChange={onChange}
           onLoad={onLoad}

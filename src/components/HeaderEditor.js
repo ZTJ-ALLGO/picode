@@ -6,6 +6,8 @@ const langs = ['C', 'Cpp', 'Cpp14', 'Java', 'Python', 'Python3', 'Scala', 'Php',
 export default function HeaderEditor ({ onRunCode, onSelectLang }) {
 
   const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'Python3');
+  const [code, setCode] = useState('');
+  const [extension, setExtension] = useState(lang);
 
   const runCode = async () => {
     const data = await RunCode.run(lang, localStorage.getItem('code'));
@@ -20,15 +22,36 @@ export default function HeaderEditor ({ onRunCode, onSelectLang }) {
     localStorage.setItem('choosed-lang', choosedLang);
   }
 
+  const downloadCode = () => {
+    const dType = 'data:text/plain;charset=utf-8,';
+    setCode(dType + localStorage.getItem('code'));
+
+    if (lang === 'Python' || lang === 'Python3') setExtension('py');
+    else if (lang === 'Csharp') setExtension('cs');
+    else if (lang === 'Perl') setExtension('pl');
+    else setExtension(lang.toLowerCase());
+  }
+
   return (
     <header>
-      <button className="btn" onClick={runCode}>run code</button>
       <div className="h-100">
-        <button className="btn">Language : {lang}</button>
-        <select onChange={onLangChange} className="bg-rose">
+        <button className="btn"><i className="fas fa-language"></i> {lang}</button>
+      </div>
+
+      <div className="h-100">
+        <button className="btn bg-green" onClick={runCode}><i className="fas fa-play"></i></button>
+        <select onChange={onLangChange} value={lang}>
           {langs.map(l => <option value={l} key={l}>{l}</option>)}
         </select>
+        <a
+          href={encodeURIComponent(code)}
+          className="btn bg-blue"
+          onClick={downloadCode}
+          download={'code.' + extension}>
+          <i className="fas fa-download"></i>
+        </a>
       </div>
+
     </header>
   )
 }
