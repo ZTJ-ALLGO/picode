@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import RunCode from '../services/RunCode';
+import axios from 'axios';
 
 const langs = ['C', 'Cpp', 'Cpp14', 'Java', 'Python', 'Python3', 'Scala', 'Php', 'Perl', 'Csharp'];
 
@@ -10,6 +11,8 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
   const [extension, setExtension] = useState(lang);
   const [disableBtnRun, setdisableBtnRun] = useState(false);
   const refInputFile = useRef();
+
+  const [openInputURL, setopenInputURL] = useState(false);
 
   const runCode = async () => {
     setdisableBtnRun(true);
@@ -37,6 +40,17 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
     else setExtension(lang.toLowerCase());
   }
 
+  // fetch from url
+  const getUrlContent = async (event) => {
+    const fromUrl = event.target.value;
+    if (fromUrl && fromUrl.length > 10) {
+      const result = await axios.get(fromUrl);
+      const content = await result.data;
+      setCode(content);
+      sendFileContent(content);
+    }
+  }
+
   // open file
   const handleFileSelect = (event) => {
     const reader = new FileReader()
@@ -45,45 +59,56 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
   }
 
   const handleFileLoad = (event) => {
-    sendFileContent(event.target.result)
-    setCode(event.target.result);
+    const fromFile = event.target.result;
+    if (fromFile && fromFile.length > 5) {
+      sendFileContent(event.target.result);
+      setCode(event.target.result);
+    }
   }
 
   const openFile = () => {
     refInputFile.current.click();
   }
 
-
   return (
-    <header>
-      <div className="h-100">
-        <button className="btn"><i className="fas fa-language"></i> {lang}</button>
-      </div>
+    <>
+      <header>
+        <div className="h-100">
+          <button className="btn bg-dark-btn"><i className="fas fa-language"></i> {lang}</button>
+        </div>
 
-      <div className="h-100">
-        <button className="btn bg-green" onClick={runCode} disabled={disableBtnRun}>
-          <i className="fas fa-play"></i>
-        </button>
+        <div className="h-100">
+          <button className="btn bg-dark-btn" onClick={runCode} disabled={disableBtnRun}>
+            <i className="fas fa-play"></i>
+          </button>
 
-        <select onChange={onLangChange} value={lang}>
-          {langs.map(l => <option value={l} key={l}>{l}</option>)}
-        </select>
+          <select onChange={onLangChange} value={lang}>
+            {langs.map(l => <option value={l} key={l}>{l}</option>)}
+          </select>          
 
-        <a
-          href={code}
-          className="btn bg-blue"
-          onClick={downloadCode}
-          download={'code.' + extension}>
-          <i className="fas fa-download"></i>
-        </a>
+          <button className="btn" onClick={openFile}>
+            <i className="far fa-folder-open"></i>
+          </button>
 
-        <button className="btn bg-green" onClick={openFile}>
-          <i className="fas fa-file"></i>
-        </button>
-      </div>
+          <button className="btn" onClick={() => { setopenInputURL(!openInputURL) }}>
+            <i className="fas fa-underline"></i>
+          </button>
 
-      <input type="file" ref={refInputFile} onChange={handleFileSelect} hidden />
+          <a
+            href={code}
+            className="btn"
+            onClick={downloadCode}
+            download={'code.' + extension}>
+            <i className="fas fa-download"></i>
+          </a>
+        </div>
 
-    </header>
+        <input type="file" ref={refInputFile} onChange={handleFileSelect} hidden />
+      </header>
+      <input type="text" name="fromurl"
+        style={{ display: openInputURL ? 'block' : 'none' }}
+        onChange={getUrlContent}
+        placeholder="Enter code url.." />
+    </>
   )
 }
