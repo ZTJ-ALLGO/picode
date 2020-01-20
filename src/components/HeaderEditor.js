@@ -91,7 +91,7 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
           </button>
 
           <button className="btn" onClick={() => { setopenInputURL(!openInputURL) }}>
-            <i className="fas fa-underline"></i>
+            <i className="fas fa-link"></i>
           </button>
 
           <a
