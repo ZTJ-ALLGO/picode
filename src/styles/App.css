@@ -28,6 +28,10 @@ select,.btn,a {
 }
 a{text-decoration: none !important; padding: 12px 20px !important;}
 .btn:hover, button:hover {background-color: #2f3129 !important; }
+button:disabled,
+button[disabled=disabled], button:disabled{
+  background-color: #000000 !important; cursor: not-allowed;
+}
 
 .preview{
   font-family: monospace;
