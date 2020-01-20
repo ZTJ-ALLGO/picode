@@ -12,4 +12,4 @@ Languges : 'C', 'C++', 'Java', 'Python', 'Python 3', 'Scala', 'Php', 'Perl', 'C#
 - https://bitbucket.org/haikel2090/common/raw/7fd22baa849349914b5bd71cb9019925934b8517/half-pyramid.c
 
 ### Capture
-![MinIDE](https://i.ibb.co/H7nmHr4/Annotation-2020-01-19-233738.png)
+![MinIDE](https://i.ibb.co/R0hwvK1/Annotation-2020-01-21-002208.png)
