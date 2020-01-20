@@ -21,7 +21,10 @@ export default function Home () {
   const [isRunning, setIsRunning] = useState(false);
 
   const onLoad = () => {
-    setCode(localStorage.getItem('code'));
+    let localCode = localStorage.getItem('code');
+    if (localCode && localCode.length > 2) {
+      setCode(localCode);
+    }
   }
 
   const onChange = (newValue) => {
@@ -36,14 +39,14 @@ export default function Home () {
         setPreview(value);
         setIsRunning(false);
       }, 1000);
-    }    
+    }
   }
 
-  const onSelectLang = (value) =>{    
-    if(value === 'Cpp' || value === 'C' || value === 'Cpp14') {
+  const onSelectLang = (value) => {
+    if (value === 'Cpp' || value === 'C' || value === 'Cpp14') {
       value = 'c_cpp'
     }
-    setLang(value);    
+    setLang(value);
   }
 
   return (
@@ -51,7 +54,7 @@ export default function Home () {
       <div className="editor">
         <HeaderEditor onRunCode={onRunCode} onSelectLang={onSelectLang} />
         <AceEditor
-          mode={lang.toLowerCase().replace(/\d/gi,'')}
+          mode={lang.toLowerCase().replace(/\d/gi, '')}
           theme="monokai"
           onChange={onChange}
           onLoad={onLoad}
