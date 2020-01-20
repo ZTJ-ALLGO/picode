@@ -26,8 +26,7 @@ header {
 }
 
 select,
-.btn,
-a {
+.btn {
   text-transform: uppercase;
   font-size: 14px;
   color: rgb(219, 219, 219);
@@ -42,12 +41,17 @@ a {
 }
 
 a {
+  color: rgb(219, 219, 219);
+  background-color: #272822 !important;
   text-decoration: none !important;
-  padding: 14px 20px 12px !important;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: background-color .3s;
 }
 
 .btn:hover,
-button:hover {
+button:hover,a:hover {
   background-color: #2f3129 !important;
   color: #ffffff !important;
 }
@@ -119,7 +123,7 @@ input[type="text"] {
 }
 
 .bg-orange {
-  background-color: #ff9800 !important;
+  background-color: #da8300 !important;
 }
 
 .bg-rose {

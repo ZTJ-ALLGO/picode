@@ -56,7 +56,7 @@ export default function Home () {
       </div>
 
       <div className="preview">
-        <HeaderOutput />
+        <HeaderOutput lang={lang} />
         <div className="prev-box">
           {isRunning ? <div style={{ color: '#2196f3' }}>Running code...</div> : ''}
           {preview && <div style={{ color: '#5cb85c' }}>Finished in {preview.time} ms</div>}
