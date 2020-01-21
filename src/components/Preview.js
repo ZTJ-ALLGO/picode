@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderOutput from './HeaderOutput';
+import HeaderOutput from '../containers/HeaderOutput';
 
 export default function Preview ({ lang, preview,isRunning }) {
   return (

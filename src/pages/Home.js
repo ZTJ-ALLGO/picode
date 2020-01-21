@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HeaderEditor from '../components/HeaderEditor';
+import HeaderEditor from '../containers/HeaderEditor';
 import Editor from '../components/Editor';
 import Preview from '../components/Preview';
 import JudgeApi from '../services/JudgeApi';

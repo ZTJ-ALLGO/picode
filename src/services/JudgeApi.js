@@ -1,32 +1,32 @@
 import axios from 'axios';
 
 const langs = [
-  { id: 46, name: "Bash (5.0.0)", mode_colors: "sh" },
-  { id: 49, name: "C (GCC 8.3.0)", mode_colors: "c_cpp" },
-  { id: 53, name: "C++ (GCC 8.3.0)", mode_colors: "c_cpp" },
-  { id: 50, name: "C (GCC 9.2.0)", mode_colors: "c_cpp" },
-  { id: 54, name: "C++ (GCC 9.2.0)", mode_colors: "c_cpp" },
-  { id: 51, name: "C# (Mono 6.6.0.161)", mode_colors: "csharp" },
-  { id: 56, name: "D (DMD 2.089.1)", mode_colors: "d" },
-  { id: 57, name: "Elixir (1.9.4)", mode_colors: "elixir" },
-  { id: 60, name: "Go (1.13.5)", mode_colors: "golang" },
+  { id: 46, name: "Bash (5.0.0)", mode_colors: "sh", ext: 'sh' },
+  { id: 49, name: "C (GCC 8.3.0)", mode_colors: "c_cpp", ext: 'c' },
+  { id: 53, name: "C++ (GCC 8.3.0)", mode_colors: "c_cpp", ext: 'cpp' },
+  { id: 50, name: "C (GCC 9.2.0)", mode_colors: "c_cpp", ext: 'c' },
+  { id: 54, name: "C++ (GCC 9.2.0)", mode_colors: "c_cpp", ext: 'cpp' },
+  { id: 51, name: "C# (Mono 6.6.0.161)", mode_colors: "csharp", ext: 'cs' },
+  { id: 56, name: "D (DMD 2.089.1)", mode_colors: "d", ext: 'd' },
+  { id: 57, name: "Elixir (1.9.4)", mode_colors: "elixir", ext: 'ex' },
+  { id: 60, name: "Go (1.13.5)", mode_colors: "golang", ext: 'hs' },
   { id: 61, name: "Haskell (GHC 8.8.1)", mode_colors: "haskell" },
-  { id: 62, name: "Java (OpenJDK 13.0.1)", mode_colors: "java" },
-  { id: 63, name: "Node.js 12.14.0", mode_colors: "typescript" },
-  { id: 64, name: "Lua (5.3.5)", mode_colors: "lua" },
-  { id: 65, name: "OCaml (4.09.0)", mode_colors: "ocaml" },
-  { id: 67, name: "Pascal (FPC 3.0.4)", mode_colors: "pascal" },
-  { id: 68, name: "PHP (7.4.1)", mode_colors: "php" },
-  { id: 71, name: "Python (3.8.1)", mode_colors: "python" },
-  { id: 72, name: "Ruby (2.7.0)", mode_colors: "ruby" },
-  { id: 73, name: "Rust (1.40.0)", mode_colors: "rust" }
+  { id: 62, name: "Java (OpenJDK 13.0.1)", mode_colors: "java", ext: 'java' },
+  { id: 63, name: "Node.js 12.14.0", mode_colors: "typescript", ext: 'js' },
+  { id: 64, name: "Lua (5.3.5)", mode_colors: "lua", ext: 'lua' },
+  { id: 65, name: "OCaml (4.09.0)", mode_colors: "ocaml", ext: 'ml' },
+  { id: 67, name: "Pascal (FPC 3.0.4)", mode_colors: "pascal", ext: 'pas' },
+  { id: 68, name: "PHP (7.4.1)", mode_colors: "php", ext: 'php' },
+  { id: 71, name: "Python (3.8.1)", mode_colors: "python", ext: 'py' },
+  { id: 72, name: "Ruby (2.7.0)", mode_colors: "ruby", ext: 'rb' },
+  { id: 73, name: "Rust (1.40.0)", mode_colors: "rust", ext: 'rs' }
 ];
 
 const BASE = 'https://api.judge0.com';
 
 export default class JudgeApi {
 
-  static async createSubmission ({ source_code, language_id, stdin = "" }) {    
+  static async createSubmission ({ source_code, language_id, stdin = "" }) {
     const url = BASE + '/submissions';
     const data = {
       "source_code": source_code,
@@ -93,16 +93,19 @@ export default class JudgeApi {
   }
 
   static getLangId (mode_colors) {
-    return JudgeApi.getLangs().find(l => l.mode_colors === mode_colors).id;
+    return langs.find(l => l.mode_colors === mode_colors).id;
   }
 
   static getModeColor (langId) {
-    return JudgeApi.getLangs().find(l => l.id === +(langId)).mode_colors;
+    return langs.find(l => l.id === +(langId)).mode_colors.trim();
   }
 
-  static getLangName (name) {    
-    return (JudgeApi.getLangs().find(l => l.mode_colors === name).name)
-      .split('(')[0];
+  static getLangName (name) {
+    return (langs.find(l => l.mode_colors === name).name).split('(')[0].trim();
+  }
+
+  static getLangExtension (mode) {   
+    return langs.find(l => l.mode_colors === mode.trim().toLowerCase()).ext;
   }
 
   static async getStatues () {

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import JudgeApi from '../services/JudgeApi';
-import SelectLang from './SelectLang';
+import SelectLang from '../components/SelectLang';
 
 export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelectLang }) {
 
