@@ -7,6 +7,10 @@ export default class RunCode {
   static async run (lang, code) {
     const result = await axios.post(BASE_URL + '/api/runcode', { 'lang': lang, 'code': code });
     const resp = await result.data;
-    return resp;
+    return { stdout: resp.output, stderr: resp.rntError, time: resp.time };
+  }
+
+  static getLangs () {
+    return ['C', 'Cpp', 'Cpp14', 'Java', 'Python', 'Python3', 'Scala', 'Php', 'Perl', 'Csharp'];
   }
 }

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import HeaderEditor from '../components/HeaderEditor';
 import HeaderOutput from '../components/HeaderOutput';
 import Editor from '../components/Editor';
+import JudgeApi from '../services/JudgeApi';
 
 export default function Home () {
 
-  const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'Python3');
+  const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'python');
   const [code, setCode] = useState(localStorage.getItem('code') || '');
   const [preview, setPreview] = useState('');
   const [isRunning, setIsRunning] = useState(false);
@@ -38,9 +39,6 @@ export default function Home () {
   }
 
   const onSelectLang = (value) => {
-    if (value === 'Cpp' || value === 'C' || value === 'Cpp14') {
-      value = 'c_cpp'
-    }
     setLang(value);
   }
 
@@ -60,8 +58,8 @@ export default function Home () {
         <div className="prev-box">
           {isRunning ? <div style={{ color: '#2196f3' }}>Running code...</div> : ''}
           {preview && <div style={{ color: '#5cb85c' }}>Finished in {preview.time} ms</div>}
-          {preview && <div>{preview.output.split(/\n|\r\n/).map((v, i) => <div className="output" key={v + i}>{v}</div>)}</div>}
-          <div style={{ color: '#e40000' }}>{preview.rntError}</div>
+          {preview && <div>{preview.stdout.split(/\n|\r\n/).map((v, i) => <div className="output" key={v + i}>{v}</div>)}</div>}
+          <div style={{ color: '#e40000' }}>{preview.stderr}</div>
         </div>
       </div>
 

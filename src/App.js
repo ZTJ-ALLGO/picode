@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import { GlobalProvider } from './hooks/GlobalProvider';
 
 function App () {
+
   return (
     <Router>
       <GlobalProvider>

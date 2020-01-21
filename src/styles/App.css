@@ -39,6 +39,7 @@ select,
   outline: none;
   transition: background-color .3s;
 }
+select {max-height: 150px !important;}
 
 a {
   color: rgb(219, 219, 219);

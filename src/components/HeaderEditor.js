@@ -1,12 +1,10 @@
 import React, { useState, useRef } from 'react';
-import RunCode from '../services/RunCode';
 import axios from 'axios';
-
-const langs = ['C', 'Cpp', 'Cpp14', 'Java', 'Python', 'Python3', 'Scala', 'Php', 'Perl', 'Csharp'];
+import JudgeApi from '../services/JudgeApi';
 
 export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelectLang }) {
 
-  const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'Python3');    
+  const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'python');
   const [disableBtnRun, setdisableBtnRun] = useState(false);
   const refInputFile = useRef();
 
@@ -15,14 +13,18 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
   const runCode = async () => {
     setdisableBtnRun(true);
     let data = {};
-    data = await RunCode.run(lang, localStorage.getItem('code'));
+    let localCode = localStorage.getItem('code');
+    let langId = JudgeApi.getLangId(lang);    
+    
+    data = await JudgeApi.getSubmissionResult({ source_code: localCode, language_id: langId, stdin: "" });
+
     localStorage.setItem('run-response', JSON.stringify(data));
     sendCodeResult(data);
     if (data) { setdisableBtnRun(false); }
   }
 
-  const onLangChange = (e) => {
-    let choosedLang = e.target.value;
+  const onLangChange = (e) => {   
+    let choosedLang = JudgeApi.getLangLang(e.target.value);
     onSelectLang(choosedLang);
     setLang(choosedLang);
     localStorage.setItem('choosed-lang', choosedLang);
@@ -69,8 +71,8 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
           </button>
 
           <select onChange={onLangChange} value={lang} className="bg-dark-btn">
-            {langs.map(l => <option value={l} key={l}>{l}</option>)}
-          </select>          
+            {JudgeApi.getLangs().map(l => <option value={l.id} key={l.id}>{l.name}</option>)}
+          </select>
 
           <button className="btn" onClick={openFile}>
             <i className="far fa-folder-open"></i>
@@ -79,7 +81,7 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
           <button className="btn" onClick={() => { setopenInputURL(!openInputURL) }}>
             <i className="fas fa-link"></i>
           </button>
-          
+
         </div>
 
         <input type="file" ref={refInputFile} onChange={handleFileSelect} hidden />
