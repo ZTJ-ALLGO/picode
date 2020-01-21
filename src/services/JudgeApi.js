@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const langs = [
-  { id: 46, name: "Bash (5.0.0)", lang: "bash" },
-  { id: 49, name: "C (GCC 8.3.0)", lang: "c" },
+  { id: 46, name: "Bash (5.0.0)", lang: "sh" },
+  { id: 49, name: "C (GCC 8.3.0)", lang: "c_cp" },
   { id: 53, name: "C++ (GCC 8.3.0)", lang: "c_pp" },
-  { id: 50, name: "C (GCC 9.2.0)", lang: "c" },
+  { id: 50, name: "C (GCC 9.2.0)", lang: "c_cp" },
   { id: 54, name: "C++ (GCC 9.2.0)", lang: "c_pp" },
   { id: 51, name: "C# (Mono 6.6.0.161)", lang: "csharp" },
   { id: 55, name: "Common Lisp (SBCL 2.0.0)", lang: "csp" },
@@ -22,7 +22,7 @@ const langs = [
   { id: 71, name: "Python (3.8.1)", lang: "python" },
   { id: 72, name: "Ruby (2.7.0)", lang: "ruby" },
   { id: 73, name: "Rust (1.40.0)", lang: "rust" },
-  { id: 74, name: "TypeScript (3.7.4)", lang: "javascript" }
+  { id: 74, name: "TypeScript (3.7.4)", lang: "typescript" }
 ];
 
 const base = 'https://api.judge0.com';

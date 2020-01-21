@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import HeaderEditor from '../components/HeaderEditor';
-import HeaderOutput from '../components/HeaderOutput';
 import Editor from '../components/Editor';
-import JudgeApi from '../services/JudgeApi';
+import Preview from '../components/Preview';
 
 export default function Home () {
 
@@ -53,15 +52,7 @@ export default function Home () {
         <Editor lang={lang} code={code} onChange={onChange} onLoad={onLoad} />
       </div>
 
-      <div className="preview">
-        <HeaderOutput lang={lang} />
-        <div className="prev-box">
-          {isRunning ? <div style={{ color: '#2196f3' }}>Running code...</div> : ''}
-          {preview && <div style={{ color: '#5cb85c' }}>Finished in {preview.time} ms</div>}
-          {preview && <div>{preview.stdout.split(/\n|\r\n/).map((v, i) => <div className="output" key={v + i}>{v}</div>)}</div>}
-          <div style={{ color: '#e40000' }}>{preview.stderr}</div>
-        </div>
-      </div>
+      <Preview lang={lang} preview={preview} isRunning={isRunning} />
 
     </main>
   );
