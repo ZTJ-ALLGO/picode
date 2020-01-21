@@ -1,6 +1,6 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 
-export default function HeaderOutput ({lang}) {
+export default function HeaderOutput ({ lang }) {
 
   const [code, setCode] = useState('');
   const [extension, setExtension] = useState(lang);

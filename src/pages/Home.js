@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import HeaderEditor from '../components/HeaderEditor';
 import Editor from '../components/Editor';
 import Preview from '../components/Preview';
+import JudgeApi from '../services/JudgeApi';
 
 export default function Home () {
 
@@ -52,7 +53,7 @@ export default function Home () {
         <Editor lang={lang} code={code} onChange={onChange} onLoad={onLoad} />
       </div>
 
-      <Preview lang={lang} preview={preview} isRunning={isRunning} />
+      <Preview lang={JudgeApi.getLangName(lang)} preview={preview} isRunning={isRunning} />
 
     </main>
   );

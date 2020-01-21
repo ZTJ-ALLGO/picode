@@ -62,7 +62,7 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
     <>
       <header>
         <div className="h-100">
-          <button className="btn bg-dark-btn"><i className="fas fa-language"></i> {lang}</button>
+          <button className="btn bg-dark-btn"><i className="fas fa-language"></i> {JudgeApi.getLangName(lang)}</button>
         </div>
 
         <div className="h-100">
@@ -70,7 +70,7 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
             <i className="fas fa-play"></i>
           </button>
 
-          <select onChange={onLangChange} value={lang} className="bg-dark-btn">
+          <select onChange={onLangChange} className="bg-dark-btn">
             {JudgeApi.getLangs().map(l => <option value={l.id} key={l.id}>{l.name}</option>)}
           </select>
 

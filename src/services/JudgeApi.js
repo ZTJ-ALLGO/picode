@@ -21,16 +21,15 @@ const langs = [
   { id: 68, name: "PHP (7.4.1)", lang: "php" },
   { id: 71, name: "Python (3.8.1)", lang: "python" },
   { id: 72, name: "Ruby (2.7.0)", lang: "ruby" },
-  { id: 73, name: "Rust (1.40.0)", lang: "rust" },
-  { id: 74, name: "TypeScript (3.7.4)", lang: "typescript" }
+  { id: 73, name: "Rust (1.40.0)", lang: "rust" }
 ];
 
-const base = 'https://api.judge0.com';
+const BASE = 'https://api.judge0.com';
 
 export default class JudgeApi {
 
   static async createSubmission ({ source_code, language_id, stdin = "" }) {
-    const url = base + '/submissions';
+    const url = BASE + '/submissions';
     const data = {
       "source_code": source_code,
       "language_id": language_id,
@@ -39,12 +38,18 @@ export default class JudgeApi {
     const response = await axios.post(url, data);
     const result = await response.data;
     localStorage.setItem('code-token', result.token);
-    return result.token;
+    return localStorage.getItem('code-token') || result.token;
+  }
+
+  static async sendReq (token) {
+    const url = BASE + '/submissions/';
+    let urlParams = '?base64_encoded=false&fields=stdout,stderr,status_id,language_id,time,status';
+    let response = await axios.get(url + token + urlParams);
+    let result = await response.data;
+    return result;
   }
 
   static async getResult (reqData) {
-    const url = base + '/submissions/';
-    const urlParams = '?base64_encoded=false&fields=stdout,stderr,status_id,language_id,time,status';
     let token = '', firstResult = {}, statusId = 5
 
     token = token
@@ -52,14 +57,12 @@ export default class JudgeApi {
       : await this.createSubmission(reqData);
 
     return new Promise(async (resolve, reject) => {
-      firstResult = await axios.get(url + token + urlParams);
+      firstResult = await this.sendReq(token);
       statusId = firstResult.status.id;
       if (statusId > 2) { resolve(firstResult); }
-
       setTimeout(async () => {
         try {
-          let response = await axios.get(url + token + '?base64_encoded=false&fields=stdout,stderr,status_id,language_id,time,status');
-          firstResult = response.data;
+          firstResult = await this.sendReq(token);
           resolve(firstResult);
         } catch (error) {
           reject(error);
@@ -70,17 +73,18 @@ export default class JudgeApi {
 
   static async getSubmissionResult (reqData) {
     let result = await this.getResult(reqData);
-    if ((result && result.status.id > 2) || !result) {
-      localStorage.removeItem('code-token')
+    if ((result && result.status.id === 3) || !result) {
+      localStorage.removeItem('code-token');
     }
 
-    if (result && result.status.id > 3) {
-      return {
+    else {
+      result = {
         stdout: result.status.description,
         time: result.time,
         stderr: result.stderr
       }
     }
+
     return result;
   }
 
@@ -96,6 +100,11 @@ export default class JudgeApi {
 
   static getLangLang (langId) {
     return JudgeApi.getLangs().find(l => l.id === +(langId)).lang;
+  }
+
+  static getLangName (name) {
+    return (JudgeApi.getLangs().find(l => l.lang === name).name)
+      .split('(')[0];
   }
 
   static async getStatues () {
