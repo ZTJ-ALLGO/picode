@@ -8,8 +8,8 @@ Languges : 'C', 'C++', 'Java', 'Python', 'Python 3', 'Scala', 'Php', 'Perl', 'C#
 - [ ] live code
 - [ ] multiple tabs
 
-### Test url
-- https://bitbucket.org/haikel2090/common/raw/7fd22baa849349914b5bd71cb9019925934b8517/half-pyramid.c
-
 ### Capture
 ![MinIDE](https://i.ibb.co/t3mvVsS/Annotation-2020-01-21-002405.png)
+
+### Code examples
+- https://bitbucket.org/haikel2090/code-examples

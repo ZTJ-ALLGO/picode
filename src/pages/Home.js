@@ -54,7 +54,6 @@ export default function Home () {
       </div>
 
       <Preview lang={JudgeApi.getLangName(lang)} preview={preview} isRunning={isRunning} />
-
     </main>
   );
 }
