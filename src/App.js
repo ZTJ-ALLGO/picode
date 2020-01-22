@@ -4,9 +4,8 @@ import './styles/App.css';
 import Home from './pages/Home';
 import { GlobalProvider } from './hooks/GlobalProvider';
 import PasteEE from './services/PasteEE';
-import Pastery from './services/Pastery';
 
-Pastery.CreatePaste()
+PasteEE.createBin()
 .then(r=>{console.log(r);
 })
 .catch(e=>{console.log(e);
