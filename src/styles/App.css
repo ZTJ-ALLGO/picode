@@ -1,14 +1,6 @@
-html,
-body {
-  margin: 0;
-  color: #ffffff;
-  height: 100%;
-  overflow: hidden;
-}
+html,body {margin: 0;color: #ffffff;height: 100%;overflow: hidden;}
 
-body {
-  position: relative;
-}
+body { position: relative;}
 
 main {
   height: 100vh;
@@ -160,9 +152,9 @@ input[type="text"] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e1e1e;
+  background: #555;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #363636;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import JudgeApi from '../services/JudgeApi';
 
-export default function HeaderOutput ({ children, lang }) {
+export default function HeaderOutput ({ lang }) {
 
   const [code, setCode] = useState('');
   const [extension, setExtension] = useState(lang);
@@ -15,7 +15,7 @@ export default function HeaderOutput ({ children, lang }) {
   return (
     <header>
       <button className="btn bg-dark-btn">
-        <i className="fas fa-terminal"></i> Language: {lang}
+        <i className="fas fa-terminal"></i> Language: {JudgeApi.getLangName(lang)}
       </button>
       <a
         href={code}
