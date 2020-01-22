@@ -92,20 +92,20 @@ export default class JudgeApi {
     return langs;
   }
 
-  static getLangId (mode_colors) {
-    return langs.find(l => l.mode_colors === mode_colors).id;
+  static getLangNameById (langId) {
+    return langs.find(l => l.id === parseInt(langId, 10)).name.split('(')[0];
   }
 
   static getModeColor (langId) {
     return langs.find(l => l.id === +(langId)).mode_colors;
   }
 
-  static getLangName (name) {
-    return (langs.find(l => l.mode_colors === name).name).split('(')[0].trim();
+  static getLangName (mode_colors) {
+    return langs.find(l => l.mode_colors === mode_colors).name;
   }
 
   static getLangExtension (langId) {
-    return langs.find(l => l.id === parseInt(langId,10)).ext;
+    return langs.find(l => l.id === parseInt(langId, 10)).ext;
   }
 
   static async getStatues () {

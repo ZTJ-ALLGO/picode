@@ -5,9 +5,13 @@ import SelectLang from '../components/SelectLang';
 
 export default function HeaderEditor ({ children, sendCodeResult, sendFileContent, onSelectLang }) {
 
-  const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'bash');
-  const [langId, setLangId] = useState(localStorage.getItem('lang-id') || 46);
-  
+  const [langOptions, setLangOptions] = useState({
+    langMode: localStorage.getItem('lang-mode') || 'sh',
+    currentLang: localStorage.getItem('choosed-lang') || 'bash',
+    langId: localStorage.getItem('lang-id') || 46
+  });
+
+
   const [disableBtnRun, setdisableBtnRun] = useState(false);
   const refInputFile = useRef();
   const [openInputURL, setopenInputURL] = useState(false);
@@ -19,7 +23,7 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
 
     data = await JudgeApi.getSubmissionResult({
       source_code: localCode,
-      language_id: localStorage.getItem('lang-id') || langId,
+      language_id: langOptions.langId,
       stdin: ""
     });
 
@@ -29,12 +33,19 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
   }
 
   const onLangChange = (e) => {
-    let choosedLang = JudgeApi.getModeColor(e.target.value);
-    onSelectLang(choosedLang);
-    setLang(choosedLang);
-    setLangId(e.target.value);
+    let choosedMode = JudgeApi.getModeColor(e.target.value);
+    let choosedLang = JudgeApi.getLangNameById(e.target.value);
+
+    onSelectLang(choosedMode);
+
+    setLangOptions({
+      langMode: choosedMode,
+      currentLang: choosedLang,
+      langId: e.target.value
+    });
 
     localStorage.setItem('lang-id', e.target.value);
+    localStorage.setItem('lang-mode', choosedMode);
     localStorage.setItem('choosed-lang', choosedLang);
   }
 
@@ -67,7 +78,7 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
       <header>
         <div className="h-100">
           <button className="btn bg-dark-btn">
-            <i className="fas fa-language"></i> {JudgeApi.getLangName(lang)}
+            <i className="fas fa-language"></i> {langOptions.currentLang}
           </button>
         </div>
 

@@ -8,7 +8,7 @@ import SelectFont from '../components/SelectFont';
 
 export default function Home () {
 
-  const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'python');
+  const [langMode, setLangMode] = useState(localStorage.getItem('lang-mode') || 'sh');
   const [code, setCode] = useState(localStorage.getItem('code') || '');
   const [preview, setPreview] = useState('');
   const [isRunning, setIsRunning] = useState(false);
@@ -41,8 +41,8 @@ export default function Home () {
     localStorage.setItem('code', value);
   }
 
-  const onSelectLang = (value) => {
-    setLang(value);
+  const onSelectLang = (value) => {    
+    setLangMode(value);
   }
 
   const onFontSizeChange = (e) => {
@@ -63,7 +63,7 @@ export default function Home () {
         </HeaderEditor>
 
         <Editor
-          lang={lang}
+          lang={langMode}
           code={code}
           onChange={onChange}
           onLoad={onLoad}
@@ -72,8 +72,8 @@ export default function Home () {
       </div>
 
       <div className="preview">
-        <HeaderOutput lang={lang} />
-        <Preview lang={JudgeApi.getLangName(lang)} preview={preview} isRunning={isRunning} />
+        <HeaderOutput lang={JudgeApi.getLangName(langMode)} />
+        <Preview preview={preview} isRunning={isRunning} />
       </div>
     </main>
   );
