@@ -18,7 +18,7 @@ export default function HeaderOutput ({ lang }) {
       <a
         href={code}
         onClick={downloadCode}
-        download={'code.' + JudgeApi.getLangExtension(lang)}>
+        download={'code.' + JudgeApi.getLangExtension(localStorage.getItem('lang-id'))}>
         <i className="fas fa-download"></i>
       </a>
     </header>
