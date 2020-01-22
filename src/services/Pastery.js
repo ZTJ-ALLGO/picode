@@ -6,7 +6,7 @@ export default class Pastery {
     const data = { body: "hello world" };
 
     const response = await axios({
-      method: 'POST', url: 'https://hastebin.com/documents/', data
+      method: 'POST', url: 'http://hastebin.com/documents/', data
     });
     const binId = await response.data;
     this.saveLocalSorage(binId);
@@ -14,7 +14,7 @@ export default class Pastery {
   }
 
   static async getBin (binId) {
-    const response = await axios.get('https://hastebin.com/documents/' + binId);
+    const response = await axios.get('http://hastebin.com/documents/' + binId);
     const binContent = await response.data;
     return binContent;
   }
