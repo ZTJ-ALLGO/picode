@@ -5,7 +5,7 @@ import SelectLang from '../components/SelectLang';
 
 export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelectLang }) {
 
-  const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'python');
+  const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'bash');
   const [langId, setLangId] = useState(localStorage.getItem('lang-id') || 46);
   
   const [disableBtnRun, setdisableBtnRun] = useState(false);
