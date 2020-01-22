@@ -74,7 +74,7 @@ export default function CodeEditor () {
       </div>
 
       <div className="preview">
-        <HeaderOutput lang={JudgeApi.getLangNameById(langId)} />
+        <HeaderOutput lang={JudgeApi.getLangNameById(langId)} isRunning={isRunning} />
         <Preview preview={preview} isRunning={isRunning} />
       </div>
     </main>

@@ -1,4 +1,5 @@
-html,body {margin: 0;color: #ffffff; background-color: #1e1e1e; height: 100%;overflow: hidden;}
+html,body {font-family: 'Poppins', sans-serif;
+   margin: 0;color: #ffffff; background-color: #1e1e1e; height: 100%;overflow: hidden;}
 
 body { position: relative;}
 
@@ -8,8 +9,9 @@ body { position: relative;}
 }
 
 /* home */
-.jumbutron{display: flex; flex-direction: column; justify-content: center; align-items: center;}
-h1 {font-size: 55px; margin: 0;}
+.jumbutron{display: flex; flex-direction: column; justify-content: center; align-items: center;
+  background: url(../img/bg-pattern.png),#1e1e1e;}
+h1 { font-family: 'Poppins', sans-serif;  font-size: 75px; }
 ul {list-style: none; padding: 0; margin: 0; display: flex;}
 li {    display: flex;
   flex-direction: column;
@@ -50,7 +52,7 @@ select,
   outline: none;
   transition: background-color .3s;
 }
-select {max-height: 150px !important;}
+select { font-family: 'Poppins', sans-serif;  max-height: 150px !important;}
 
 a {
   color: rgb(219, 219, 219);
@@ -81,6 +83,7 @@ button:disabled {
   height: 100% !important;
   width: 40% !important;
   border-left: 2px solid #1a1b17;
+  overflow: auto;
 }
 
 .prev-box {
@@ -124,17 +127,12 @@ input[type="text"] {
 }
 
 /* ultl*/
-.ml-20 {
-  margin-left: 20px;
-}
+.ml-20 {margin-left: 20px;}
+.mr-20 {margin-right: 20px;}
+.mr-10 {margin-right: 10px;}
+.mb-20 {margin-bottom: 20px;}
 
-.mr-20 {
-  margin-right: 20px;
-}
-
-.h-100 {
-  height: 100% !important;
-}
+.h-100 {height: 100% !important;}
 .w-100{width: 100% !important;}
 
 .bg-orange {
@@ -149,13 +147,10 @@ input[type="text"] {
   background-color: #4caf50 !important;
 }
 
-.bg-blue {
-  background-color: #607d8b !important;
-}
-
-.bg-dark-btn {
-  background-color: #1e1e1e !important;
-}
+.bg-blue {background-color: #607d8b !important;}
+.bg-blue-dark {background-color: #1d2a77 !important;}
+.bg-dark-btn {background-color: #1e1e1e !important;}
+.bg-light-dark {background-color: #272822 !important;}
 
 .bg-dark-btn,
 .bg-blue,
@@ -164,7 +159,8 @@ input[type="text"] {
 .bg-rose {
   color: #ffffff !important;
 }
-
+.bl-dark {    border-left: 2px solid #1a1b17;}
+.bm-dark {    border-bottom: 2px solid #1a1b17;}
 /* scroll */
 ::-webkit-scrollbar {
   width: 10px;

@@ -21,11 +21,12 @@ import "ace-builds/src-noconflict/mode-pascal";
 
 import "ace-builds/src-noconflict/mode-php";
 import "ace-builds/src-noconflict/theme-monokai";
+import JudgeApi from '../services/JudgeApi';
 
 export default function Editor ({ lang, code, onChange, onLoad, fontSize }) {
   return (
     <AceEditor
-      mode={lang}
+      mode={JudgeApi.getModeColorByName(lang)}
       theme="monokai"
       onChange={onChange}
       onLoad={onLoad}

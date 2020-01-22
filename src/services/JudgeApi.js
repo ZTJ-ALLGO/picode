@@ -90,6 +90,12 @@ export default class JudgeApi {
     return langs;
   }
 
+  static async getStatues () {
+    const response = await axios.get('https://api.judge0.com/statuses');
+    const statues = await response.data;
+    return statues;
+  }
+
   static getLangNameById (langId) {
     return langs.find(l => l.id === parseInt(langId, 10)).name;
   }
@@ -98,17 +104,16 @@ export default class JudgeApi {
     return langs.find(l => l.id === +(langId)).mode_colors;
   }
 
+  static getModeColorByName (name) {
+    const mod = langs.find(l => l.name === name.trim());
+    return mod ? mod.mode_colors : name;
+  }
+
   static getLangName (mode_colors) {
     return langs.find(l => l.mode_colors === mode_colors.trim()).name;
   }
 
   static getLangExtension (langId) {
     return langs.find(l => l.id === parseInt(langId, 10)).ext;
-  }
-
-  static async getStatues () {
-    const response = await axios.get('https://api.judge0.com/statuses');
-    const statues = await response.data;
-    return statues;
   }
 }

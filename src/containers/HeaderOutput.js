@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import JudgeApi from '../services/JudgeApi';
 
-export default function HeaderOutput ({ lang }) {
+export default function HeaderOutput ({ lang,isRunning }) {
 
   const [code, setCode] = useState('');
   const [extension, setExtension] = useState(lang);
@@ -14,7 +14,7 @@ export default function HeaderOutput ({ lang }) {
 
   return (
     <header>
-      <button className="btn bg-dark-btn">
+      <button className={isRunning ? "btn bg-green" :"btn bg-blue-dark"}>
         <i className="fas fa-terminal"></i> {lang}
       </button>
       <a

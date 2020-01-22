@@ -79,17 +79,16 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
       <header>
         <div className="h-100">
           <Link to='/'><i className="fas fa-home"></i></Link>
-          <button className="btn bg-dark-btn">
+          <button className="btn bg-orange" onClick={runCode} disabled={disableBtnRun}>
+            <i className="fas fa-play"></i>
+          </button>
+          <button className="btn bg-blue-dark">
             <i className="fas fa-language"></i> {langOptions.currentLang.split('(')[0]}
           </button>
         </div>
 
-        <div className="h-100">
-          <button className="btn bg-orange" onClick={runCode} disabled={disableBtnRun}>
-            <i className="fas fa-play"></i>
-          </button>
-
-          <SelectLang onLangChange={onLangChange} />
+        <div className="h-100 bl-dark">
+                    <SelectLang onLangChange={onLangChange} />
           {children}
 
           <button className="btn" onClick={() => { refInputFile.current.click(); }}>

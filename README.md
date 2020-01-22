@@ -14,7 +14,7 @@ Languges: Bash (5.0.0), C (GCC 8.3.0), C++ (GCC 8.3.0), C (GCC 9.2.0), C++ (GCC 
 - [ ] multiple tabs
 
 ### Capture
-![MinIDE](https://i.ibb.co/t3mvVsS/Annotation-2020-01-21-002405.png)
+![MinIDE](https://i.ibb.co/RyHyGTm/Annotation-2020-01-22-235031.png)
 
 ### Code examples
 - https://bitbucket.org/haikel2090/code-examples
