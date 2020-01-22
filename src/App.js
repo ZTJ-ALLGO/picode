@@ -4,7 +4,7 @@ import './styles/App.css';
 import Home from './pages/Home';
 import CodeEditor from './pages/CodeEditor';
 
-function App () {
+export default function App () {
 
   return (
     <Router>
@@ -15,5 +15,3 @@ function App () {
     </Router>
   );
 }
-
-export default App;

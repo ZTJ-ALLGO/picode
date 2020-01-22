@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import JudgeApi from '../services/JudgeApi';
 import SelectLang from '../components/SelectLang';
@@ -88,7 +88,7 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
         </div>
 
         <div className="h-100 bl-dark">
-                    <SelectLang onLangChange={onLangChange} />
+          <SelectLang onLangChange={onLangChange} />
           {children}
 
           <button className="btn" onClick={() => { refInputFile.current.click(); }}>
