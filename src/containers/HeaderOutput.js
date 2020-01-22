@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import JudgeApi from '../services/JudgeApi';
 
-export default function HeaderOutput ({ lang }) {
+export default function HeaderOutput ({ children, lang }) {
 
   const [code, setCode] = useState('');
   const [extension, setExtension] = useState(lang);
@@ -9,7 +9,6 @@ export default function HeaderOutput ({ lang }) {
   const downloadCode = () => {
     const dType = 'data:text/plain;charset=utf-8,';
     setCode(dType + encodeURIComponent(localStorage.getItem('code')));
-
     setExtension(JudgeApi.getLangExtension(localStorage.getItem('lang-id')));
   }
 

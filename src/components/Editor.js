@@ -22,7 +22,7 @@ import "ace-builds/src-noconflict/mode-pascal";
 import "ace-builds/src-noconflict/mode-php";
 import "ace-builds/src-noconflict/theme-monokai";
 
-export default function Editor ({ lang, code, onChange, onLoad }) { 
+export default function Editor ({ lang, code, onChange, onLoad, fontSize }) {
   return (
     <AceEditor
       mode={lang}
@@ -30,7 +30,7 @@ export default function Editor ({ lang, code, onChange, onLoad }) {
       onChange={onChange}
       onLoad={onLoad}
       value={code}
-      fontSize={18}
+      fontSize={fontSize}
       showPrintMargin={true}
       showGutter={true}
       name="UNIQUE_ID_OF_DIV"

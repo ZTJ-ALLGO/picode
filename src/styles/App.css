@@ -16,7 +16,7 @@ main {
 }
 
 header {
-  background-color: #3b3b38;
+  background-color: #1e1e1e;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -30,7 +30,7 @@ select,
   text-transform: uppercase;
   font-size: 14px;
   color: rgb(219, 219, 219);
-  background-color: #3b3b38 !important;
+  background-color: #1e1e1e !important;
   font-size: 14px;
   border: 0;
   padding: 7px 20px;
@@ -45,7 +45,7 @@ a {
   color: rgb(219, 219, 219);
   background-color: #272822 !important;
   text-decoration: none !important;
-  padding: 12px 20px;
+  padding: 12px 20px 11px;
   text-transform: uppercase;
   font-size: 14px;
   transition: background-color .3s;
@@ -67,7 +67,7 @@ button:disabled {
 .preview {
   font-family: monospace;
   font-size: 16px;
-  background-color: #272822;
+  background-color: #1e1e1e;
   height: 100% !important;
   width: 40% !important;
   border-left: 2px solid #1a1b17;
@@ -91,6 +91,9 @@ button:disabled {
 
 #UNIQUE_ID_OF_DIV {
   width: 100% !important;
+}
+.ace-monokai,.ace-monokai .ace_gutter {
+  background: #1e1e1e !important;
 }
 
 /**/
@@ -140,7 +143,7 @@ input[type="text"] {
 }
 
 .bg-dark-btn {
-  background-color: #272822 !important;
+  background-color: #1e1e1e !important;
 }
 
 .bg-dark-btn,
@@ -157,7 +160,7 @@ input[type="text"] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(63, 63, 63);
+  background: #1e1e1e;
 }
 
 ::-webkit-scrollbar-thumb:hover {

@@ -3,7 +3,7 @@ import axios from 'axios';
 import JudgeApi from '../services/JudgeApi';
 import SelectLang from '../components/SelectLang';
 
-export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelectLang }) {
+export default function HeaderEditor ({ children, sendCodeResult, sendFileContent, onSelectLang }) {
 
   const [lang, setLang] = useState(localStorage.getItem('choosed-lang') || 'bash');
   const [langId, setLangId] = useState(localStorage.getItem('lang-id') || 46);
@@ -77,6 +77,7 @@ export default function HeaderEditor ({ sendCodeResult, sendFileContent, onSelec
           </button>
 
           <SelectLang onLangChange={onLangChange} />
+          {children}
 
           <button className="btn" onClick={() => { refInputFile.current.click(); }}>
             <i className="far fa-folder-open"></i>

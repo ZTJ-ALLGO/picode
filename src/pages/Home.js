@@ -3,6 +3,8 @@ import HeaderEditor from '../containers/HeaderEditor';
 import Editor from '../components/Editor';
 import Preview from '../components/Preview';
 import JudgeApi from '../services/JudgeApi';
+import HeaderOutput from '../containers/HeaderOutput';
+import SelectFont from '../components/SelectFont';
 
 export default function Home () {
 
@@ -10,6 +12,7 @@ export default function Home () {
   const [code, setCode] = useState(localStorage.getItem('code') || '');
   const [preview, setPreview] = useState('');
   const [isRunning, setIsRunning] = useState(false);
+  const [fontSize, setFontSize] = useState(localStorage.getItem('fontsize') || '18px');
 
   const onLoad = () => {
     let localCode = localStorage.getItem('code');
@@ -33,13 +36,18 @@ export default function Home () {
     }
   }
 
-  const getFileContent = (value) =>{
+  const getFileContent = (value) => {
     setCode(value);
     localStorage.setItem('code', value);
   }
 
   const onSelectLang = (value) => {
     setLang(value);
+  }
+
+  const onFontSizeChange = (e) => {
+    setFontSize(e.target.value);
+    localStorage.setItem('fontsize', e.target.value);
   }
 
   return (
@@ -49,11 +57,24 @@ export default function Home () {
           sendCodeResult={getCodeResult}
           sendFileContent={getFileContent}
           onSelectLang={onSelectLang}
+        >
+          <SelectFont onFontSizeChange={onFontSizeChange} fontSize={fontSize} />
+
+        </HeaderEditor>
+
+        <Editor
+          lang={lang}
+          code={code}
+          onChange={onChange}
+          onLoad={onLoad}
+          fontSize={fontSize}
         />
-        <Editor lang={lang} code={code} onChange={onChange} onLoad={onLoad} />
       </div>
 
-      <Preview lang={JudgeApi.getLangName(lang)} preview={preview} isRunning={isRunning} />
+      <div className="preview">
+        <HeaderOutput lang={lang} />
+        <Preview lang={JudgeApi.getLangName(lang)} preview={preview} isRunning={isRunning} />
+      </div>
     </main>
   );
 }
