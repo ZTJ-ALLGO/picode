@@ -101,7 +101,7 @@ export default class JudgeApi {
   }
 
   static getLangName (mode_colors) {
-    return langs.find(l => l.mode_colors === mode_colors).name;
+    return langs.find(l => l.mode_colors === mode_colors.trim()).name;
   }
 
   static getLangExtension (langId) {

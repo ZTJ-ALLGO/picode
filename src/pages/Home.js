@@ -8,6 +8,7 @@ import SelectFont from '../components/SelectFont';
 
 export default function Home () {
 
+  const [langId, setLangId] = useState(+localStorage.getItem('lang-id') || 46);
   const [langMode, setLangMode] = useState(localStorage.getItem('lang-mode') || 'sh');
   const [code, setCode] = useState(localStorage.getItem('code') || '');
   const [preview, setPreview] = useState('');
@@ -41,8 +42,9 @@ export default function Home () {
     localStorage.setItem('code', value);
   }
 
-  const onSelectLang = (value) => {    
-    setLangMode(value);
+  const onSelectLang = (languageId) => {    
+    setLangMode(JudgeApi.getLangNameById(languageId));
+    setLangId(languageId);
   }
 
   const onFontSizeChange = (e) => {
@@ -72,7 +74,7 @@ export default function Home () {
       </div>
 
       <div className="preview">
-        <HeaderOutput lang={JudgeApi.getLangName(langMode)} />
+        <HeaderOutput lang={JudgeApi.getLangNameById(langId)} />
         <Preview preview={preview} isRunning={isRunning} />
       </div>
     </main>

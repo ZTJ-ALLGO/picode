@@ -36,7 +36,7 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
     let choosedMode = JudgeApi.getModeColor(e.target.value);
     let choosedLang = JudgeApi.getLangNameById(e.target.value);
 
-    onSelectLang(choosedMode);
+    onSelectLang(e.target.value);
 
     setLangOptions({
       langMode: choosedMode,
