@@ -24,7 +24,12 @@ export default class PasteEE {
       method: 'POST', url: 'https://api.paste.ee/v1/pastes', headers, data
     });
     const binInfo = await response.data;
-    this.saveLocalSorage(binInfo);
+    this.saveLocalSorage({
+      id: binInfo.id,
+      link: binInfo.link,
+      success: binInfo.success,
+      date: new Date().toGMTString()
+    });
     return binInfo;
   }
 
@@ -34,16 +39,16 @@ export default class PasteEE {
     return binContent;
   }
 
-  static async removeBin(binId) {
+  static async removeBin (binId) {
     const response = await axios({
-      method: 'DELETE', url: 'https://api.paste.ee/v1/pastes/'+binId, headers
+      method: 'DELETE', url: 'https://api.paste.ee/v1/pastes/' + binId, headers
     });
     const removedBin = await response.data;
     return removedBin;
   }
 
   static async getServerBins () {
-    const response = await axios.get(BASE_URL + '/pastes', { headers });
+    const response = await axios.get('https://api.paste.ee/v1/pastes?key=aO39RBMQzln8oyptqOEnkpBeOL9pF7Z1jNjy2fC4J&perpage=25&page=1');
     const bins = await response.data;
     return bins;
   }

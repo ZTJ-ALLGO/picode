@@ -15,7 +15,7 @@ export default function HeaderOutput ({ lang }) {
   return (
     <header>
       <button className="btn bg-dark-btn">
-        <i className="fas fa-terminal"></i> Language: {lang}
+        <i className="fas fa-terminal"></i> {lang}
       </button>
       <a
         href={code}

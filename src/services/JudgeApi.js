@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const langs = [
   { id: 46, name: "Bash (5.0.0)", mode_colors: "sh", ext: 'sh' },
-  { id: 49, name: "C (GCC 8.3.0)", mode_colors: "c_cpp", ext: 'c' },
-  { id: 53, name: "C++ (GCC 8.3.0)", mode_colors: "c_cpp", ext: 'cpp' },
   { id: 50, name: "C (GCC 9.2.0)", mode_colors: "c_cpp", ext: 'c' },
   { id: 54, name: "C++ (GCC 9.2.0)", mode_colors: "c_cpp", ext: 'cpp' },
   { id: 51, name: "C# (Mono 6.6.0.161)", mode_colors: "csharp", ext: 'cs' },
@@ -12,7 +10,7 @@ const langs = [
   { id: 60, name: "Go (1.13.5)", mode_colors: "golang", ext: 'hs' },
   { id: 61, name: "Haskell (GHC 8.8.1)", mode_colors: "haskell" },
   { id: 62, name: "Java (OpenJDK 13.0.1)", mode_colors: "java", ext: 'java' },
-  { id: 63, name: "Node.js 12.14.0", mode_colors: "typescript", ext: 'js' },
+  { id: 63, name: "Node.js (12.14.0)", mode_colors: "typescript", ext: 'js' },
   { id: 64, name: "Lua (5.3.5)", mode_colors: "lua", ext: 'lua' },
   { id: 65, name: "OCaml (4.09.0)", mode_colors: "ocaml", ext: 'ml' },
   { id: 67, name: "Pascal (FPC 3.0.4)", mode_colors: "pascal", ext: 'pas' },
@@ -93,7 +91,7 @@ export default class JudgeApi {
   }
 
   static getLangNameById (langId) {
-    return langs.find(l => l.id === parseInt(langId, 10)).name.split('(')[0];
+    return langs.find(l => l.id === parseInt(langId, 10)).name;
   }
 
   static getModeColor (langId) {

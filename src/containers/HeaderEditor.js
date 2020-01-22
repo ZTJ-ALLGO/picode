@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 import JudgeApi from '../services/JudgeApi';
 import SelectLang from '../components/SelectLang';
@@ -77,8 +78,9 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
     <>
       <header>
         <div className="h-100">
+          <Link to='/'><i className="fas fa-home"></i></Link>
           <button className="btn bg-dark-btn">
-            <i className="fas fa-language"></i> {langOptions.currentLang}
+            <i className="fas fa-language"></i> {langOptions.currentLang.split('(')[0]}
           </button>
         </div>
 
