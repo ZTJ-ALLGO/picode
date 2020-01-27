@@ -9433,6 +9433,11 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
+snow-cvs@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/snow-cvs/-/snow-cvs-1.0.2.tgz#bbe1d8136c7477f86d69845711a97db9b72474df"
+  integrity sha512-+dCgotkoFkGYSKA8uqnrPwINgJXdYSqim5U6h8Fj5h+MOc24qT0CtimsbvnwFo0dx1TcxpSJROOq1EZHkbOElA==
+
 sockjs-client@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.4.0.tgz#c9f2568e19c8fd8173b4997ea3420e0bb306c7d5"

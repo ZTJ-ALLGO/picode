@@ -5,6 +5,7 @@ import Preview from '../components/Preview';
 import JudgeApi from '../services/JudgeApi';
 import HeaderOutput from '../containers/HeaderOutput';
 import SelectFont from '../components/SelectFont';
+import SideBar from '../components/SideBar';
 
 export default function CodeEditor () {
 
@@ -61,7 +62,6 @@ export default function CodeEditor () {
           onSelectLang={onSelectLang}
         >
           <SelectFont onFontSizeChange={onFontSizeChange} fontSize={fontSize} />
-
         </HeaderEditor>
 
         <Editor
@@ -77,6 +77,7 @@ export default function CodeEditor () {
         <HeaderOutput lang={JudgeApi.getLangNameById(langId)} isRunning={isRunning} />
         <Preview preview={preview} isRunning={isRunning} />
       </div>
+      <SideBar code={code} setCode={setCode} />      
     </main>
   );
 }

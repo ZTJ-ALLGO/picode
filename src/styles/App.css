@@ -9,23 +9,8 @@ body { position: relative;}
 }
 
 /* home */
-.jumbutron{display: flex; flex-direction: column; justify-content: center; align-items: center;
-  background: url(../img/bg-pattern.png),#1e1e1e;}
-h1 { font-family: 'Poppins', sans-serif;  font-size: 75px; }
-ul {list-style: none; padding: 0; margin: 0; display: flex;}
-li {    display: flex;
-  flex-direction: column;
-  background: #745fb5;
-  color: #fff;
-  text-align: left;
-  padding: 16px;
-  width: auto;
-  border-radius: 3px;
-  box-shadow: 1px 1px 3px 0px rgb(249, 251, 253);
-  text-shadow: 0 1px 1px rgb(0, 0, 0);
-  white-space: nowrap;
-  margin: 10px;
-}
+.jumbutron{display: flex; flex-direction: column; justify-content: center; align-items: center;}
+h1 { font-family: 'Poppins', sans-serif;  font-size:65px; margin: 0 !important; }
 /* end home */
 
 header {

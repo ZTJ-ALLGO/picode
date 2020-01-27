@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import JudgeApi from '../services/JudgeApi';
 import SelectLang from '../components/SelectLang';
+import LocalSaver from '../util/localStorage';
 
 export default function HeaderEditor ({ children, sendCodeResult, sendFileContent, onSelectLang }) {
 
@@ -64,13 +65,18 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
   const handleFileSelect = (event) => {
     const reader = new FileReader()
     reader.onload = handleFileLoad;
-    reader.readAsText(event.target.files[0])
+    reader.readAsText(event.target.files[0]);
+    localStorage.setItem('file-name', event.target.files[0].name);
   }
 
   const handleFileLoad = (event) => {
     const fromFile = event.target.result;
     if (fromFile && fromFile.length > 5) {
       sendFileContent(event.target.result);
+      LocalSaver.save('files-uploaded-names', {
+        filename: localStorage.getItem('file-name'),
+        fileContent: fromFile
+      });
     }
   }
 

@@ -1,11 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import codeImg from '../img/code.png';
 
 export default function Home () {
   return (
     <div className="jumbutron">
-      <h1>MIN<span className="bg-rose">IDE</span></h1>
-      <Link to='/editor'><i className="fas fa-play mr-10"></i> start</Link>
+      <Link to='/editor'>
+        <h1>MIN<span className="bg-rose">IDE</span></h1>
+      </Link>
+
+      <div style={{ width: '50%' }}>
+        <img src={codeImg} alt="code" className="w-100" />
+      </div>
     </div>
   )
 }
