@@ -10,7 +10,8 @@ body { position: relative;}
 
 /* home */
 .jumbutron{display: flex; flex-direction: column; justify-content: center; align-items: center;}
-h1 { font-family: 'Poppins', sans-serif;  font-size:65px; margin: 0 !important; }
+h1 { font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size:65px; margin: 0 !important; }
 /* end home */
 
 header {

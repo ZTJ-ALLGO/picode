@@ -24,10 +24,13 @@ export default function SideBar ({ code, setCode }) {
 
   return (
     <div className="sidebar" style={{ marginRight: sideIsClosed ? '-230px' : '0px' }}>
-      <div className="btn-close" onClick={() => { setSideIsClosed(!sideIsClosed) }}>
+
+      <div className="btn-close" onClick={() => { setSideIsClosed(!sideIsClosed) }}
+      style={{ display: sideIsClosed ? 'flex' : 'none' }}>
         <i className="fas fa-arrows-alt-h"></i>
       </div>
-      <ul>
+
+      <ul onClick={() => { setSideIsClosed(!sideIsClosed) }} className="h-100">
         <li><i className="fas fa-folder-open"></i> Uploaded Files</li>
         {state && state.map(s =>
           <li key={s.filename}>

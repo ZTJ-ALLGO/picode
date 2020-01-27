@@ -12,13 +12,14 @@
 }
 
 .sidebar ul {
-  width: 230px;
+  width: 250px;
   list-style: none;
   margin: 0;
   padding: 0;
+  background-color: #272822;
 }
 
-.sidebar ul li {padding: 7px 12px;border-bottom: 2px solid #1a1b17; display: flex; justify-content: space-between; }
+.sidebar ul li {padding: 10px 12px;border-bottom: 2px solid #1a1b17; display: flex; justify-content: space-between; }
 .sidebar ul li:first-child { font-size: 16px; background-color: #272822; text-align: center; display: block;}
 .sidebar ul li:first-child:hover { background-color: #272822; }
 .sidebar ul li:hover {background-color: #1a1b17;}

@@ -6,7 +6,7 @@ export default function Home () {
   return (
     <div className="jumbutron">
       <Link to='/editor'>
-        <h1>MIN<span className="bg-rose">IDE</span></h1>
+        <h1><span className="bg-rose">PI</span>CODE</h1>
       </Link>
 
       <div style={{ width: '50%' }}>
