@@ -4,11 +4,11 @@ import LocalSaver from '../util/localStorage';
 
 export default function SideBar ({ code, setCode }) {
 
-  const [state, setState] = useState([]);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
   const [sideIsClosed, setSideIsClosed] = useState(false);
 
   useEffect(() => {
-    setState(LocalSaver.get('files-uploaded-names'))
+    setUploadedFiles(LocalSaver.get('files-uploaded-names'));    
   }, [code]);
 
   const getFileContent = (filename) => {
@@ -18,21 +18,27 @@ export default function SideBar ({ code, setCode }) {
   }
 
   const removeFile = (filename) => {
-    const newFiles = LocalSaver.removeOne('files-uploaded-names', filename);
-    setState(newFiles);
+    let newFiles = LocalSaver.removeOne('files-uploaded-names', filename);        
+    setUploadedFiles(newFiles);
   }
 
   return (
-    <div className="sidebar" style={{ marginRight: sideIsClosed ? '-230px' : '0px' }}>
+    <div className="sidebar" style={{ marginRight: sideIsClosed ? '-232px' : '0px' }}>
 
       <div className="btn-close" onClick={() => { setSideIsClosed(!sideIsClosed) }}
-      style={{ display: sideIsClosed ? 'flex' : 'none' }}>
+        style={{ display: sideIsClosed ? 'flex' : 'none' }}>
         <i className="fas fa-arrows-alt-h"></i>
       </div>
 
-      <ul onClick={() => { setSideIsClosed(!sideIsClosed) }} className="h-100">
-        <li><i className="fas fa-folder-open"></i> Uploaded Files</li>
-        {state && state.map(s =>
+      <ul className="h-100">
+        <li onClick={() => { setSideIsClosed(!sideIsClosed) }}>
+          <span>
+            <span className="circle">{uploadedFiles && uploadedFiles.length}</span>Files
+          </span>
+          <i className="fas fa-hand-point-right mr-10"></i>
+        </li>
+
+        {uploadedFiles && uploadedFiles.map(s =>
           <li key={s.filename}>
             <span onClick={() => getFileContent(s.filename)}>
               <i className="fas fa-file-code mr-10"></i> {s.filename}
@@ -42,6 +48,7 @@ export default function SideBar ({ code, setCode }) {
             </button>
           </li>
         )}
+
       </ul>
     </div>);
 }

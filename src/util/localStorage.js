@@ -50,7 +50,7 @@ export default class LocalSaver {
    */
   static replace (key, newValues) {
     localStorage.setItem(key, JSON.stringify(newValues));
-    return this.get(key);
+    return this.get(key) || [];
   }
 
   static checkValueExist (data, newValue) {
