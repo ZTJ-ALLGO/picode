@@ -32,10 +32,12 @@ export default function Editor ({ lang, code, onChange, onLoad, fontSize }) {
       onLoad={onLoad}
       value={code}
       fontSize={fontSize}
-      showPrintMargin={true}
+      showPrintMargin={false}
       showGutter={true}
       name="UNIQUE_ID_OF_DIV"
-      editorProps={{ $blockScrolling: true }}
+      editorProps={{
+        $blockScrolling: Infinity
+      }}
       setOptions={{ tabSize: 2 }}
     />
   )

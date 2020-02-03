@@ -4,6 +4,7 @@ import axios from 'axios';
 import JudgeApi from '../services/JudgeApi';
 import SelectLang from '../components/SelectLang';
 import LocalSaver from '../util/localStorage';
+import ButtonIcon from '../components/ButtonIcon';
 
 export default function HeaderEditor ({ children, sendCodeResult, sendFileContent, onSelectLang }) {
 
@@ -85,12 +86,20 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
       <header>
         <div className="h-100">
           <Link to='/'><i className="fas fa-home"></i></Link>
-          <button className="btn bg-orange" onClick={runCode} disabled={disableBtnRun}>
-            <i className="fas fa-play"></i>
-          </button>
-          <button className="btn bg-blue-dark">
-            <i className="fas fa-language"></i> {langOptions.currentLang.split('(')[0]}
-          </button>
+
+          <ButtonIcon
+            bclx="btn bg-orange"
+            iclx="fas fa-play"
+            onClick={runCode}
+            txt={langOptions.currentLang.split('(')[0]}
+            disabled={disableBtnRun}
+          />
+
+          <ButtonIcon
+            bclx="btn bg-blue-dark"
+            iclx="fas fa-language"
+            txt={langOptions.currentLang.split('(')[0]}
+          />
         </div>
 
         <div className="h-100 bl-dark">
@@ -101,7 +110,10 @@ export default function HeaderEditor ({ children, sendCodeResult, sendFileConten
             <i className="far fa-folder-open"></i>
           </button>
 
-          <button className="btn" onClick={() => { setopenInputURL(!openInputURL) }}>
+          <button className="btn" onClick={() => {
+            setopenInputURL(true);
+            setTimeout(() => { setopenInputURL(false); }, 5000);
+          }}>
             <i className="fas fa-link"></i>
           </button>
         </div>
