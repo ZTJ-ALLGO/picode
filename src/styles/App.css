@@ -1,3 +1,10 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
 html,body {font-family: 'Poppins', sans-serif;
    margin: 0;color: #ffffff; background-color: #1e1e1e; height: 100%;overflow: hidden;}
 
@@ -63,11 +70,17 @@ button:disabled {
   cursor: not-allowed;
 }
 
+/***/
+main > div {
+  height: 100%;
+    width: 100%;
+    display: flex;
+}
+
 .preview {
   font-family: monospace;
   font-size: 16px;  
   height: 100% !important;
-  width: 40% !important;
   border-left: 2px solid #1a1b17;
   overflow: auto;
 }
@@ -81,10 +94,11 @@ button:disabled {
   margin-bottom: 10px;
 }
 
+.gutter  { cursor: col-resize !important;}
+
 #UNIQUE_ID_OF_DIV,
 .ace_content,
 .editor {
-  width: 60% !important;
   height: 96.6% !important;
 }
 

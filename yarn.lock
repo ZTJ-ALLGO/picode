@@ -8364,7 +8364,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.7, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8689,6 +8689,14 @@ react-scripts@3.3.0:
     workbox-webpack-plugin "4.3.1"
   optionalDependencies:
     fsevents "2.1.2"
+
+react-split@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/react-split/-/react-split-2.0.7.tgz#083b26edf208daefdc9a6638f1e0836be727acb2"
+  integrity sha512-g8knkXF2unPS7XKqFVX3Z7s+ZuSjAq4lElxEy6GG7ZACyK/G1oLkdUYR/W6WwOQgMFskFpacLEnHJDZl40eO1w==
+  dependencies:
+    prop-types "^15.5.7"
+    split.js "^1.5.9"
 
 react@^16.12.0:
   version "16.12.0"
@@ -9433,11 +9441,6 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-snow-cvs@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/snow-cvs/-/snow-cvs-1.0.2.tgz#bbe1d8136c7477f86d69845711a97db9b72474df"
-  integrity sha512-+dCgotkoFkGYSKA8uqnrPwINgJXdYSqim5U6h8Fj5h+MOc24qT0CtimsbvnwFo0dx1TcxpSJROOq1EZHkbOElA==
-
 sockjs-client@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.4.0.tgz#c9f2568e19c8fd8173b4997ea3420e0bb306c7d5"
@@ -9559,6 +9562,11 @@ split-string@^3.0.1, split-string@^3.0.2:
   integrity sha512-NzNVhJDYpwceVVii8/Hu6DKfD2G+NrQHlS/V/qgv763EYudVwEcMQNxd2lh+0VrUByXN/oJkl5grOhYWvQUYiw==
   dependencies:
     extend-shallow "^3.0.0"
+
+split.js@^1.5.9:
+  version "1.5.11"
+  resolved "https://registry.yarnpkg.com/split.js/-/split.js-1.5.11.tgz#3654b2a8c625994e33c531df5c4dea83ca8af011"
+  integrity sha512-ec0sAbWnaMGpNHWo1ZgIlF3Mx7GzSyaO0GlcEBZGIFZQwYPPkbDV6JRpDmpzIshVig7USREuEPudy0ygQaskXg==
 
 sprintf-js@~1.0.2:
   version "1.0.3"

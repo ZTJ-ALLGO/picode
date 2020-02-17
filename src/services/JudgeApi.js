@@ -10,7 +10,7 @@ const langs = [
   { id: 60, name: "Go (1.13.5)", mode_colors: "golang", ext: 'hs' },
   { id: 61, name: "Haskell (GHC 8.8.1)", mode_colors: "haskell" },
   { id: 62, name: "Java (OpenJDK 13.0.1)", mode_colors: "java", ext: 'java' },
-  { id: 63, name: "Node.js (12.14.0)", mode_colors: "typescript", ext: 'js' },
+  { id: 63, name: "Node.js (12.14.0)", mode_colors: "javascript", ext: 'js' },
   { id: 64, name: "Lua (5.3.5)", mode_colors: "lua", ext: 'lua' },
   { id: 65, name: "OCaml (4.09.0)", mode_colors: "ocaml", ext: 'ml' },
   { id: 67, name: "Pascal (FPC 3.0.4)", mode_colors: "pascal", ext: 'pas' },

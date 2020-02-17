@@ -21,6 +21,9 @@ import "ace-builds/src-noconflict/mode-pascal";
 
 import "ace-builds/src-noconflict/mode-php";
 import "ace-builds/src-noconflict/theme-monokai";
+
+import "ace-builds/src-noconflict/ext-language_tools";
+
 import JudgeApi from '../services/JudgeApi';
 
 export default function Editor ({ lang, code, onChange, onLoad, fontSize }) {
@@ -38,7 +41,11 @@ export default function Editor ({ lang, code, onChange, onLoad, fontSize }) {
       editorProps={{
         $blockScrolling: Infinity
       }}
-      setOptions={{ tabSize: 2 }}
+      setOptions={{
+        enableBasicAutocompletion: true,
+        enableLiveAutocompletion: true,
+        tabSize: 2
+      }}
     />
   )
 }

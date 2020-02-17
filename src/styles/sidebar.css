@@ -4,7 +4,7 @@
   right: 0;
   width: 250px;
   height: 100%;
-  z-index: 999;
+  z-index: 9999;
   display: flex;
   transition: all .2s;
   font-size: 14px;
@@ -17,6 +17,7 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  background-color: #1e1e1e;
 }
 
 .sidebar ul li {

@@ -6,6 +6,7 @@ import JudgeApi from '../services/JudgeApi';
 import HeaderOutput from '../containers/HeaderOutput';
 import SelectFont from '../components/SelectFont';
 import SideBar from '../components/SideBar';
+import Split from 'react-split'
 
 export default function CodeEditor () {
 
@@ -43,7 +44,7 @@ export default function CodeEditor () {
     localStorage.setItem('code', value);
   }
 
-  const onSelectLang = (languageId) => {    
+  const onSelectLang = (languageId) => {
     setLangMode(JudgeApi.getLangNameById(languageId));
     setLangId(languageId);
   }
@@ -55,29 +56,35 @@ export default function CodeEditor () {
 
   return (
     <main>
-      <div className="editor">
-        <HeaderEditor
-          sendCodeResult={getCodeResult}
-          sendFileContent={getFileContent}
-          onSelectLang={onSelectLang}
-        >
-          <SelectFont onFontSizeChange={onFontSizeChange} fontSize={fontSize} />
-        </HeaderEditor>
+      <Split
+        sizes={[60, 40]}
+        gutterSize={5}
+        cursor="col-resize"
+      >
+        <div className="editor">
+          <HeaderEditor
+            sendCodeResult={getCodeResult}
+            sendFileContent={getFileContent}
+            onSelectLang={onSelectLang}
+          >
+            <SelectFont onFontSizeChange={onFontSizeChange} fontSize={fontSize} />
+          </HeaderEditor>
 
-        <Editor
-          lang={langMode}
-          code={code}
-          onChange={onChange}
-          onLoad={onLoad}
-          fontSize={fontSize}
-        />
-      </div>
+          <Editor
+            lang={langMode}
+            code={code}
+            onChange={onChange}
+            onLoad={onLoad}
+            fontSize={fontSize}
+          />
+        </div>
 
-      <div className="preview">
-        <HeaderOutput lang={JudgeApi.getLangNameById(langId)} isRunning={isRunning} />
-        <Preview preview={preview} isRunning={isRunning} />
-      </div>
-      <SideBar code={code} setCode={setCode} />      
+        <div className="preview">
+          <HeaderOutput lang={JudgeApi.getLangNameById(langId)} isRunning={isRunning} />
+          <Preview preview={preview} isRunning={isRunning} />
+        </div>
+      </Split>
+      <SideBar code={code} setCode={setCode} />
     </main>
   );
 }

@@ -5,7 +5,7 @@ import LocalSaver from '../util/localStorage';
 export default function SideBar ({ code, setCode }) {
 
   const [uploadedFiles, setUploadedFiles] = useState([]);
-  const [sideIsClosed, setSideIsClosed] = useState(false);
+  const [sideIsClosed, setSideIsClosed] = useState(true);
 
   useEffect(() => {
     setUploadedFiles(LocalSaver.get('files-uploaded-names'));    
