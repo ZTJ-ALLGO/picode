@@ -29,7 +29,10 @@
 - Rust (1.40.0)
 
 ### Capture
-![Picode](https://i.ibb.co/RyHyGTm/Annotation-2020-01-22-235031.png)
+![Picode](https://i.ibb.co/YbnsM06/picode-online.png)
+
+### Related
+- [Picode desktop app](https://github.com/haikelfazzani/picode-desktop-app)
 
 ### Code examples
 - https://bitbucket.org/haikel2090/code-examples
