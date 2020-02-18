@@ -9,9 +9,12 @@ h1 {
   font-family: 'ZCOOL QingKe HuangYou', cursive;
   font-size: 105px;
   margin: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h1 i {color: #ec8d00 !important;}
+h1 i {color: #ec8d00 !important; font-size: 80px !important;}
 
 .jumbutron h4 {    font-style: italic;
   color: #ec8d00;}
