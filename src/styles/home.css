@@ -1,0 +1,32 @@
+.jumbutron {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'ZCOOL QingKe HuangYou', cursive;
+  font-size: 105px;
+  margin: 0 !important;
+}
+
+h1 i {color: #ec8d00 !important;}
+
+.jumbutron h4 {    font-style: italic;
+  color: #ec8d00;}
+
+.jumbutron a {
+  background-color: transparent !important;
+  padding: 0 !important;
+}
+
+.jumbutron p {
+  font-size: 12px;
+  position: fixed;
+  bottom: 7px;
+  color: rgb(201, 201, 201);
+  text-transform: uppercase;
+}
+
+.jumbutron p a {font-size: 12px !important;}
